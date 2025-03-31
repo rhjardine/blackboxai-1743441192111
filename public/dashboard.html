@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="es" class="h-full">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard | GenoHealth</title>
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF',
+            secondary: '#1E3A8A',
+            accent: '#3B82F6',
+            dark: '#111827',
+            light: '#F9FAFB'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      },
+      darkMode: 'class'
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      @apply bg-gray-50 text-gray-900;
+    }
+    .dashboard-grid {
+      display: grid;
+      grid-template-columns: 280px 1fr;
+      min-height: 100vh;
+    }
+    .sidebar {
+      @apply bg-gray-800 text-white;
+    }
+    .main-content {
+      @apply bg-gray-50;
+    }
+    .chart-container {
+      @apply bg-white rounded-lg shadow p-4 dark:bg-gray-700;
+    }
+  </style>
+</head>
+<body class="dark:bg-gray-900">
+  <div class="dashboard-grid">
+    <!-- Sidebar -->
+    <aside class="sidebar p-4">
+      <div class="flex items-center mb-8">
+        <i class="fas fa-dna text-accent text-2xl mr-2"></i>
+        <span class="text-xl font-bold">GenoHealth</span>
+      </div>
+      
+      <nav>
+        <ul class="space-y-2">
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg bg-primary text-white">
+              <i class="fas fa-chart-line mr-3"></i>
+              <span>Resumen</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+              <i class="fas fa-dna mr-3"></i>
+              <span>Análisis Genómico</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+              <i class="fas fa-flask mr-3"></i>
+              <span>Biomarcadores</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+              <i class="fas fa-utensils mr-3"></i>
+              <span>Nutrigenómica</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+              <i class="fas fa-clock mr-3"></i>
+              <span>Edad Biológica</span>
+            </a>
+          </li>
+          <li>
+            <a href="#" class="flex items-center p-2 rounded-lg hover:bg-gray-700">
+              <i class="fas fa-file-pdf mr-3"></i>
+              <span>Informes</span>
+            </a>
+          </li>
+        </ul>
+      </nav>
+      
+      <div class="mt-auto pt-4 border-t border-gray-700">
+        <button id="dark-mode-toggle" class="flex items-center p-2 rounded-lg hover:bg-gray-700 w-full">
+          <i class="fas fa-moon mr-3"></i>
+          <span>Modo Oscuro</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content p-6 dark:bg-gray-900 dark:text-white">
+      <header class="flex justify-between items-center mb-8">
+        <h1 class="text-2xl font-bold">Panel de Control</h1>
+        <div class="flex items-center space-x-4">
+          <button class="p-2 rounded-full bg-gray-200 dark:bg-gray-700">
+            <i class="fas fa-bell"></i>
+          </button>
+          <div class="flex items-center">
+            <div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center text-white mr-2">
+              <span>JD</span>
+            </div>
+            <span class="font-medium">Dr. Juan Díaz</span>
+          </div>
+        </div>
+      </header>
+
+      <!-- Stats Cards -->
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+        <div class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-500 dark:text-gray-400">Variantes Genéticas</p>
+              <h3 class="text-2xl font-bold">142</h3>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center">
+              <i class="fas fa-dna text-blue-500 dark:text-blue-300"></i>
+            </div>
+          </div>
+          <p class="text-sm text-green-500 mt-2">
+            <i class="fas fa-arrow-up mr-1"></i> 12% desde el último análisis
+          </p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-500 dark:text-gray-400">Edad Biológica</p>
+              <h3 class="text-2xl font-bold">38</h3>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900 flex items-center justify-center">
+              <i class="fas fa-clock text-green-500 dark:text-green-300"></i>
+            </div>
+          </div>
+          <p class="text-sm text-green-500 mt-2">
+            <i class="fas fa-arrow-down mr-1"></i> 2 años menos que cronológica
+          </p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-500 dark:text-gray-400">Biomarcadores</p>
+              <h3 class="text-2xl font-bold">24</h3>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900 flex items-center justify-center">
+              <i class="fas fa-flask text-purple-500 dark:text-purple-300"></i>
+            </div>
+          </div>
+          <p class="text-sm text-red-500 mt-2">
+            <i class="fas fa-exclamation-circle mr-1"></i> 3 fuera de rango
+          </p>
+        </div>
+
+        <div class="bg-white p-4 rounded-lg shadow dark:bg-gray-800">
+          <div class="flex justify-between">
+            <div>
+              <p class="text-gray-500 dark:text-gray-400">Recomendaciones</p>
+              <h3 class="text-2xl font-bold">7</h3>
+            </div>
+            <div class="w-12 h-12 rounded-full bg-yellow-100 dark:bg-yellow-900 flex items-center justify-center">
+              <i class="fas fa-lightbulb text-yellow-500 dark:text-yellow-300"></i>
+            </div>
+          </div>
+          <p class="text-sm text-blue-500 mt-2">
+            <i class="fas fa-check-circle mr-1"></i> 3 implementadas
+          </p>
+        </div>
+      </div>
+
+      <!-- Main Charts -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-8">
+        <!-- Genomic Variants Chart -->
+        <div class="chart-container">
+          <h3 class="text-lg font-semibold mb-4 dark:text-white">Distribución de Variantes Genéticas</h3>
+          <canvas id="genomicChart" height="300"></canvas>
+        </div>
+
+        <!-- Biomarkers Chart -->
+        <div class="chart-container">
+          <h3 class="text-lg font-semibold mb-4 dark:text-white">Biomarcadores Metabólicos</h3>
+          <canvas id="biomarkersChart" height="300"></canvas>
+        </div>
+      </div>
+
+      <!-- Recent Uploads -->
+      <div class="bg-white rounded-lg shadow p-4 dark:bg-gray-800">
+        <h3 class="text-lg font-semibold mb-4 dark:text-white">Archivos Recientes</h3>
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
+            <thead class="bg-gray-50 dark:bg-gray-700">
+              <tr>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">Nombre</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">Tipo</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">Fecha</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">Estado</th>
+                <th class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider dark:text-gray-300">Acciones</th>
+              </tr>
+            </thead>
+            <tbody class="bg-white divide-y divide-gray-200 dark:bg-gray-800 dark:divide-gray-700">
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <i class="fas fa-dna text-blue-500 mr-2"></i>
+                    <span class="text-sm font-medium dark:text-white">genoma_jdiaz_2023.vcf</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Genómico (VCF)</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">15 Nov 2023</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    Completado
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 mr-3">Ver</a>
+                  <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300">Descargar</a>
+                </td>
+              </tr>
+              <tr>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <div class="flex items-center">
+                    <i class="fas fa-flask text-purple-500 mr-2"></i>
+                    <span class="text-sm font-medium dark:text-white">metabolitos_jdiaz_2023.csv</span>
+                  </div>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">Metabólico (CSV)</td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 dark:text-gray-300">10 Nov 2023</td>
+                <td class="px-6 py-4 whitespace-nowrap">
+                  <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200">
+                    Completado
+                  </span>
+                </td>
+                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                  <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300 mr-3">Ver</a>
+                  <a href="#" class="text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-300">Descargar</a>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/js/dashboard.js"></script>
+</body>
+</html>
