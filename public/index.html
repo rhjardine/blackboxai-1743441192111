@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Plataforma de Salud Integrativa</title>
+  <meta name="description" content="Análisis genómico, metabólico y de longevidad personalizado">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#1E40AF',
+            secondary: '#1E3A8A',
+            accent: '#3B82F6',
+            dark: '#111827',
+            light: '#F9FAFB'
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  
+  <style>
+    body {
+      font-family: 'Inter', sans-serif;
+      @apply bg-gray-50 text-gray-900;
+    }
+    .hero-gradient {
+      background: linear-gradient(135deg, #1E40AF 0%, #3B82F6 100%);
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="bg-white shadow-sm">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <div class="flex-shrink-0 flex items-center">
+            <i class="fas fa-dna text-accent text-2xl mr-2"></i>
+            <span class="text-xl font-bold text-dark">GenoHealth</span>
+          </div>
+        </div>
+        <div class="hidden md:ml-6 md:flex md:items-center space-x-8">
+          <a href="#" class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Inicio</a>
+          <a href="#" class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Tecnología</a>
+          <a href="#" class="text-gray-500 hover:text-primary px-3 py-2 text-sm font-medium">Para Profesionales</a>
+          <a href="#" class="bg-primary text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-secondary">Acceder</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <main>
+    <div class="hero-gradient text-white py-20">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="lg:grid lg:grid-cols-2 lg:gap-12 items-center">
+          <div>
+            <h1 class="text-4xl font-bold tracking-tight sm:text-5xl lg:text-6xl mb-6">
+              Descubre tu potencial de salud integral
+            </h1>
+            <p class="text-xl text-blue-100 mb-8">
+              Análisis multigenómico, metabólico y de longevidad con recomendaciones personalizadas basadas en ciencia de vanguardia.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4">
+              <a href="#" class="bg-white text-primary px-6 py-3 rounded-md text-lg font-semibold hover:bg-gray-100 text-center">
+                Comenzar análisis
+              </a>
+              <a href="#" class="border-2 border-white text-white px-6 py-3 rounded-md text-lg font-semibold hover:bg-white hover:bg-opacity-10 text-center">
+                Ver demostración
+              </a>
+            </div>
+          </div>
+          <div class="mt-12 lg:mt-0">
+            <img src="https://images.pexels.com/photos/6153354/pexels-photo-6153354.jpeg" 
+                 alt="Análisis genómico" 
+                 class="rounded-lg shadow-2xl">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- Features Section -->
+  <section class="py-20 bg-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <h2 class="text-3xl font-bold text-center mb-12">Nuestra Plataforma Integrada</h2>
+      <div class="grid md:grid-cols-3 gap-8">
+        <!-- Feature 1 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-primary mb-4">
+            <i class="fas fa-dna text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Análisis Multigenómico</h3>
+          <p class="text-gray-600">
+            Secuenciación completa y análisis de SNPs para identificar variantes genéticas relevantes.
+          </p>
+        </div>
+        
+        <!-- Feature 2 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-primary mb-4">
+            <i class="fas fa-clock text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Edad Biológica</h3>
+          <p class="text-gray-600">
+            Evaluación precisa mediante relojes epigenéticos (Horvath, PhenoAge) y biomarcadores.
+          </p>
+        </div>
+        
+        <!-- Feature 3 -->
+        <div class="bg-gray-50 p-6 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+          <div class="text-primary mb-4">
+            <i class="fas fa-utensils text-3xl"></i>
+          </div>
+          <h3 class="text-xl font-semibold mb-3">Nutrigenómica</h3>
+          <p class="text-gray-600">
+            Recomendaciones dietéticas personalizadas basadas en tu perfil genético único.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>
