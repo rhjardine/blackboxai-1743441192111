@@ -1,0 +1,53 @@
+# Environment variables
+.env
+.env.test
+.env.local
+
+# Dependency directories
+node_modules/
+bower_components/
+
+# Build artifacts
+dist/
+build/
+*.log
+logs/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS generated files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Test coverage
+coverage/
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# SSL certificates
+*.pem
+*.key
+
+# Database files
+*.db
+*.sqlite
+
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
